@@ -1,0 +1,25 @@
+{
+    "name": "lhq5189/alipay",
+    "description": "alipay for  Yii2",
+    "keywords": ["yii2", "alipay", "支付宝", "即时到账"],
+    "type": "yii2-extension",
+    "support": {
+        "source": "https://github.com/lhq5189/alipay"
+    },
+    "require": {
+        "yiisoft/yii2": "~2.0.4"
+    },
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "刘海全",
+            "email": "web0377@qq.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "lhq5189\\alipay\\": ""
+        }
+    }
+}
