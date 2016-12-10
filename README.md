@@ -1,6 +1,7 @@
 Yii2-Alipay
 
-支付宝即时到账的Yii2扩展包，！
+支付宝即时到账的Yii2扩展包！
+在liulipeng 的批量付款上改动而来 
 
 Install With Composer
 
@@ -24,7 +25,7 @@ Once the extension is installed, simply modify your application configuration as
 return [
     'alipayPartner' => '2088000000000000',
     'alipaySellerEmail' => 'xxx@xxx.com.cn',
-    'alipayKey' => 'j8zjlejjebpgei98cbbgbbmwfr4asdf',
+    'alipayKey' => 'j8gdfgdgrshhrthgdgsgtrhrdgdfg',
 ];
 AlipayController
 
