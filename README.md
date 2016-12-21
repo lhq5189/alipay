@@ -1,7 +1,7 @@
 Yii2-Alipay
 
-Ö§¸¶±¦¼´Ê±µ½ÕËµÄYii2À©Õ¹°ü£¡
-ÔÚliulipeng µÄÅúÁ¿¸¶¿îÉÏ¸Ä¶¯¶øÀ´ 
+æ”¯ä»˜å®å³æ—¶åˆ°è´¦çš„Yii2æ‰©å±•åŒ…ï¼
+åœ¨liulipeng çš„æ‰¹é‡ä»˜æ¬¾ä¸Šæ”¹åŠ¨è€Œæ¥ 
 
 Install With Composer
 
@@ -27,9 +27,11 @@ return [
     'alipaySellerEmail' => 'xxx@xxx.com.cn',
     'alipayKey' => 'j8gdfgdgrshhrthgdgsgtrhrdgdfg',
 ];
+
+
 AlipayController
 
-ÕâÊÇ¼´Ê±µ½ÕËÀı×Ó£¬Ö§¸¶±¦ÆäËü½Ó¿Ú»»³ÉÏàÓ¦µÄ½Ó¿Ú¼´¿ÉÊ¹ÓÃ
+è¿™æ˜¯å³æ—¶åˆ°è´¦ä¾‹å­ï¼Œæ”¯ä»˜å®å…¶å®ƒæ¥å£æ¢æˆç›¸åº”çš„æ¥å£å³å¯ä½¿ç”¨
 
 namespace frontend\controllers;
 
@@ -58,17 +60,17 @@ class Pay2Controller extends Controller
         $body = $data['name'];
         $total_fee = $data['price'];
         $out_trade_no = $data['id'];
-        /**************************ÇëÇó²ÎÊı**************************/
+        /**************************è¯·æ±‚å‚æ•°**************************/
 
-        //·şÎñÆ÷Òì²½¡¢Í¬²½Í¨ÖªÒ³ÃæÂ·¾¶
+        //æœåŠ¡å™¨å¼‚æ­¥ã€åŒæ­¥é€šçŸ¥é¡µé¢è·¯å¾„
        $notify_url = Yii::$app->urlManager->createAbsoluteUrl(['pay2/notify']);
         $return_url = Yii::$app->urlManager->createAbsoluteUrl(['pay2/return']);
-        //Ğèhttp://¸ñÊ½µÄÍêÕûÂ·¾¶£¬²»ÔÊĞí¼Ó?id=123ÕâÀà×Ô¶¨Òå²ÎÊı£¬yii2Ä¬ÈÏµÄÂ·ÓÉ·½ÃæÎŞ·¨½ÓÊÕµ½Òì²½Í¨Öª£¬Òª ¸ÄÎªwww.com/xxx/xxx/ĞÎÊ½·ÃÎÊ²Å¿ÉÒÔ
+        //éœ€http://æ ¼å¼çš„å®Œæ•´è·¯å¾„ï¼Œä¸å…è®¸åŠ ?id=123è¿™ç±»è‡ªå®šä¹‰å‚æ•°ï¼Œyii2é»˜è®¤çš„è·¯ç”±æ–¹é¢æ— æ³•æ¥æ”¶åˆ°å¼‚æ­¥é€šçŸ¥ï¼Œè¦ æ”¹ä¸ºwww.com/xxx/xxx/å½¢å¼è®¿é—®æ‰å¯ä»¥
 
 
         $alipayConfig = (new AlipayConfig())->getAlipayConfig();
 
-        //¹¹ÔìÒªÇëÇóµÄ²ÎÊıÊı×é£¬ÎŞĞè¸Ä¶¯
+        //æ„é€ è¦è¯·æ±‚çš„å‚æ•°æ•°ç»„ï¼Œæ— éœ€æ”¹åŠ¨
         $parameter = array(
             "service" => "create_direct_pay_by_user",
             "partner" => trim($alipayConfig['partner']),
@@ -78,15 +80,15 @@ class Pay2Controller extends Controller
             'out_trade_no'=>$out_trade_no,
             'subject'=>$body,
             'payment_type'=>1,
-            'show_url'=>'http://www.cfzxzz.com',
+            'show_url'=>'http://www.xxxxx.com',
             'total_fee'=>$total_fee,
             'seller_id'=>trim($alipayConfig['partner']),
             "_input_charset"    => trim(strtolower($alipayConfig['input_charset']))
         );
 
-        //½¨Á¢ÇëÇó
+        //å»ºç«‹è¯·æ±‚
         $alipaySubmit = new AlipaySubmit($alipayConfig);
-        $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "ÕıÔÚÌø×ªµ½Ö§¸¶Ò³Ãæ");
+        $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "æ­£åœ¨è·³è½¬åˆ°æ”¯ä»˜é¡µé¢");
         return $html_text;
     }
 
@@ -96,7 +98,7 @@ class Pay2Controller extends Controller
 
         Yii::getLogger()->log("alipay Notify Start", Logger::LEVEL_ERROR);
 
-        Yii::getLogger()->log("¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ıalipayConfig¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı¡ı", Logger::LEVEL_ERROR);
+        Yii::getLogger()->log("â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“alipayConfigâ†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“", Logger::LEVEL_ERROR);
         Yii::getLogger()->log(print_r($alipayConfig, true), Logger::LEVEL_ERROR);
 
         $notify = new AlipayNotify($alipayConfig);
@@ -108,7 +110,7 @@ class Pay2Controller extends Controller
             $total_fee = Yii::$app->request->post('total_fee');
             $buyer_email = Yii::$app->request->post('buyer_email');
             /**********************************************************************
-             * ÒÔÏÂÎªÖ§¸¶³É¹¦ºó×Ô¼ºµÄ²Ù×÷£¬¿ÉÒÔ¸ù¾İ¾ßÌåÇé¿öĞ´
+             * ä»¥ä¸‹ä¸ºæ”¯ä»˜æˆåŠŸåè‡ªå·±çš„æ“ä½œï¼Œå¯ä»¥æ ¹æ®å…·ä½“æƒ…å†µå†™
 
             $model = new Test2();
             $model->title = $orderid;
@@ -134,10 +136,10 @@ class Pay2Controller extends Controller
         $notify->verifyNotify();
         $data = Yii::$app->request->get();
         if($data){
-            $this->redirect('/testpay/list');   //Ö§¸¶³É¹¦ºóÌø×ªµØÖ·
+            $this->redirect('/testpay/list');   //æ”¯ä»˜æˆåŠŸåè·³è½¬åœ°å€
 
         }else{
-            echo 'Ö§¸¶Ê§°Ü';
+            echo 'æ”¯ä»˜å¤±è´¥';
         }
     }
 
